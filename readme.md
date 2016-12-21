@@ -1,19 +1,17 @@
-# Thaikkudam Bridge Unoffical Fan Website
+# Sidworks - Photography Portfolio Website
 
-This is a website for a popular South Indian band. 
-Preview: http://thaikkudambridge.tk/
+A photography portfolio website for a photographer
+Preview: http://sidworks.tk/
 
 
 
 
 
 ### Tech
+
 This project uses:
 * Jquery
 *  Twitter Bootstrap
-*  AnimateitJS
-*  Normalize
-
 
 
 ### Installation
