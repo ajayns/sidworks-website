@@ -34,17 +34,27 @@ h4 {
     color: #333;
 }
 
+.close-button {
+  z-index: 99;
+
+}
+
 .modal-body img {
     max-width: 100%;
+    max-height: 90vh;
+    margin-top: 2vh;
 }
 
 .modal-content,
 .modal-dialog {
-    width: 90%;
+    max-height: 100;
+    max-width: 100%;
+    padding: 0;
 }
 
 .modal-content {
-    background-color: #333;
+    background-color: transparent;
+    box-shadow: none;
 }
 
 p {
