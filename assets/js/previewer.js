@@ -1,5 +1,5 @@
 /*!
- * previewer.js v0.0.9
+ * previewer.js v0.2.0
  * https://github.com/ajayns/previewer
  *
  * Copyright (c) 2017 Ajay NS
@@ -18,24 +18,39 @@ function Previewer() {
 		'		</div>' +
 		'	</div>';
 
+
 	// Add it to the body on init
-	$("body").append(this.template);
+	document.body.innerHTML += this.template;
 
-	// Get img src and call previewer on click
-	$(".preview-image, .preview-images>li>img").click(function () {
-		var imgSrc = $(this).attr("src");
-		imgSrc = imgSrc.slice(0,-4) + ' l.jpg';
-		$("nav").hide();
-		$("body").css("overflow", "hidden");
-		$("#previewer-img").attr("src", imgSrc);
-		$("#previewer").css("display", "block");
-	});
+	// Define function to close preview
+	this.closeWindow = function () {
+		document.getElementById("previewer").style.display = "none";
+		document.body.style.overflow = "scroll";
+	};
 
-	// Close previewer on click
-	$("#previewer-close").click(function () {
-		$("#previewer").css("display", "none");
-		$("body").css("overflow", "scroll");
-		$("nav").show();
-	});
+	var self = this;
 
+	// Call previewer on image click
+	var images = document.querySelectorAll(".preview-image, .preview-images img");
+	for (i = 0; i < images.length; i++) {
+		images[i].addEventListener('click', function () {
+			var imgSrc = this.getAttribute("src");
+			document.getElementById("previewer-img").src = imgSrc;
+			document.getElementById("previewer").style.display = "block";
+		});
+	}
+
+
+	// Close previewer when clicked
+	document.getElementById("previewer-close").addEventListener("click", this.closeWindow);
+	document.getElementById("previewer-fade").addEventListener("click", this.closeWindow);
+
+
+	// Close window on keypress
+	document.onkeydown = function (evt) {
+		evt = evt || window.event;
+		if (evt.keyCode == 27) {
+			self.closeWindow();
+		}
+	};
 }
